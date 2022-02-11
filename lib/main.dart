@@ -8,6 +8,7 @@
 // @13.5 Web Url Routing with GetX / not found page error/ for web
 // @13.6 Web url routing with GetX Part 2/ found error page, trans cannot work in the first page(GetPage)/ for web
 // @13.7 Navigation Animation Part 1 (Slide Transition)
+// @13.8 Navigation Animation Part 2 [Rotation Transition]
 
 
 

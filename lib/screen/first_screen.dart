@@ -14,19 +14,18 @@ class FirstScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              Navigator.push(context, 
-              PageRouteBuilder(
-                transitionDuration: Duration(seconds: 3),     
-                pageBuilder: (_, animation, __){
-                  return SlideTransition(
-                    child: SecondScreen(),
-                    position: Tween<Offset>(
-                      begin: Offset(0.7, 0),
-                      end: Offset(0,0)
-                    ).animate(CurvedAnimation(parent: animation, 
-                    curve: Curves.bounceInOut))
-                    );
-                }));
+              Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    transitionDuration: Duration(seconds: 2),
+                    pageBuilder: (_, animation, __){
+                      return RotationTransition(
+                        child: SecondScreen(),
+                        turns: Tween<double>(
+                          begin: 0.5,
+                          end: 1,
+                        ).animate(CurvedAnimation(parent: animation, curve: Curves.bounceInOut)));
+                    }));
             },
             child: const Text("Go to Second Screen")),
       ),
