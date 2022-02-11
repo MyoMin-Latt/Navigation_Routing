@@ -5,7 +5,8 @@
 //       Can solve above error/ String? _arg = await Navigator.pushNamed(context, 'second',
 //                        arguments: 'Data from First Screen') as String?;
 // @13.4 onGenerate on Web/ import 'dart:html' as html/ not easy to use
-// @13.5 Web Url Routing with GetX
+// @13.5 Web Url Routing with GetX / not found page error
+// @13.6 Web url routing with GetX Part 2/ found error page, trans cannot work in the first page(GetPage)
 
 
 
@@ -21,11 +22,20 @@ import 'package:url_strategy/url_strategy.dart';
 void main() {
   setPathUrlStrategy();
   runApp(GetMaterialApp(
-    initialRoute: '/',
+    initialRoute: '/first',
     unknownRoute: GetPage(name: '/notfound', page: ()=>const NotFound()),
+    routingCallback: (Routing? route){
+      print(route!.current);
+    },
     getPages: [
-      GetPage(name: '/', page: ()=> const FirstScreen()),
-      GetPage(name: '/second', page: ()=> const SecondScreen())
+      GetPage(
+        // transition: Transition.zoom,
+        // transitionDuration: Duration(seconds: 2),// cannot work 
+        name: '/first', page: ()=> const FirstScreen()),
+      GetPage(
+        transition: Transition.zoom,
+        transitionDuration: Duration(seconds: 2),
+        name: '/second', page: ()=> const SecondScreen())
     ],
     
   ));
