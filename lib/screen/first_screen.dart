@@ -6,7 +6,6 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String _name = 'Tun Tun';
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -15,14 +14,19 @@ class FirstScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return SecondScreen(_name);
-              })).then((value) {
-                if (value != null) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('$value')));
-                }
+              Navigator.pushNamed(context, 'second',
+                      arguments: 'Data from First Screen')
+                  .then((value) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("$value"),
+                  action: SnackBarAction(label: 'Cancel', onPressed: () {}),
+                ));
               });
+
+              // ***
+              // Error has with async & await
+              // _CastError (type 'Null' is not a subtype of type 'String' in type cast)
+
             },
             child: const Text("Go to Second Screen")),
       ),
