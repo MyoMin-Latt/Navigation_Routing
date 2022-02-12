@@ -13,6 +13,7 @@ class SecondScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
+            Navigator.pop(context);
             // Navigator.push(context, 
             // PageRouteBuilder(
             //   transitionDuration: Duration(seconds: 2),
