@@ -4,9 +4,22 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('Home Page'),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Home Page'),
+          toolbarHeight: 0,
+          bottom: TabBar(tabs: [
+            Tab(text: "Image", icon: Icon(Icons.image),),
+            Tab(text: "Video", icon: Icon(Icons.video_collection),)
+          ],),
+        ),
+        body: TabBarView(children: [
+          Center(child: Text('Images'),),
+          Center(child: Text("Videos"))
+        ])
       ),
     );
   }
